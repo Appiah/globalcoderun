@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class Activity_MainNewsPage extends Activity {
+public class Activity_Profile extends Activity {
 
 	TextView tab_1;
 	Button bttn_base_0, bttn_base_1;
@@ -23,9 +23,9 @@ public class Activity_MainNewsPage extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.main_news_page_layout);
+		setContentView(R.layout.activity_my_profile);
 		
-		ctx = Activity_MainNewsPage.this;
+		ctx = Activity_Profile.this;
 		
 		//Reference ui elements
 		tab_1 = (TextView )findViewById(R.id.nav_tv_1);
@@ -58,17 +58,17 @@ public class Activity_MainNewsPage extends Activity {
   							switch(j) {
   							//change color to default
   							case 0:
-  								//we are right here . . .dont do anything
+  								//this should take us to "Trending" ie. Main News Area
+  								Intent activity_Trending_intent = new Intent(Activity_Profile.this, Activity_MainNewsPage.class );
+  								startActivity(activity_Trending_intent);
   								break;
   							case 1:	
-  							//do the action
-  							Intent activity_Post_intent = new Intent(Activity_MainNewsPage.this, Activity_Poster.class );
-  							startActivity(activity_Post_intent);
+  								//this should take us to "My Posts"
+  								Intent activity_Post_intent = new Intent(Activity_Profile.this, Activity_Poster.class );
+  								startActivity(activity_Post_intent);
   							break;
   							case 2:
-  								//this should take us to "My Profile"
-  								Intent activity_Profile_intent = new Intent(Activity_MainNewsPage.this, Activity_Profile.class );
-  								startActivity(activity_Profile_intent);
+  								//dont do anything . . .we are right here....
   								break;
   							default:
   								//DO NOTHING . . .
@@ -94,10 +94,7 @@ public class Activity_MainNewsPage extends Activity {
 		
 		for(int x=0; x<3; x++) {
 			
-			//because we are in the Activity_MainNewsPage,
-			//turn off all the views under the tv except 
-			//the first one.
-			if(x==0){//trending
+			if(x==2){//My Profile
 				nav_V(3, "nav_v_", x).setVisibility(View.VISIBLE);
 			}else{
 				nav_V(3, "nav_v_", x).setVisibility(View.GONE);

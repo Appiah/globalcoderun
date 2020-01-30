@@ -33,7 +33,7 @@
        <View
            android:id="@+id/nav_v_0"
            android:layout_height="4dp"
-           android:layout_width="match_parent"
+           android:layout_width="70dp"
            android:layout_below="@+id/nav_tv_0"
            android:layout_centerHorizontal="true"
            android:background="#e8ffc4"
@@ -81,7 +81,7 @@
        <View
            android:layout_height="4dp"
            android:id="@+id/nav_v_1"
-           android:layout_width="match_parent"
+           android:layout_width="70dp"
            android:layout_below="@+id/nav_tv_1"
            android:layout_centerHorizontal="true"
            android:background="#e8ffc4"
@@ -130,7 +130,7 @@
        <View
            android:layout_height="4dp"
            android:id="@+id/nav_v_2"
-           android:layout_width="match_parent"
+           android:layout_width="70dp"
            android:layout_below="@+id/nav_tv_2"
            android:layout_centerHorizontal="true"
            android:background="#e8ffc4"
