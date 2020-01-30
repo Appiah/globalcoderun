@@ -2,7 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+	
+	<!--
+    <ListView
+        android:id=""></ListView>
+    -->
+    
     <include
         android:id="@+id/base_bttns_parent_id"
         layout="@layout/base_bttns"/>
@@ -30,5 +35,11 @@
     <include
         android:id="@+id/app_header_id"
         layout="@layout/app_header"/>
+    
+    <include
+        android:id="@+id/activity_outputer_id"
+        layout="@layout/news_viewer"/>
+    
+    <!-- news_hd, news_detail, activity_outputer_id,  -->
     
 </RelativeLayout>

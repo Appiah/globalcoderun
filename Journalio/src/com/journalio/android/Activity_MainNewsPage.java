@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +17,10 @@ public class Activity_MainNewsPage extends Activity {
 
 	TextView tab_1;
 	Button bttn_base_0, bttn_base_1;
+	
+	TextView news_hd, news_detail;
+	RelativeLayout activity_outputer_id;
+	ImageView iv_img_cancel;
 	
 	Context ctx;
 	
@@ -35,6 +41,11 @@ public class Activity_MainNewsPage extends Activity {
 		bttn_base_1=(Button)findViewById(R.id.base_bttn_1);
 		
 		bttn_base_0.setText(getResources().getString(R.string.get_your_account_for_more_features));
+		
+		news_hd = (TextView )findViewById(R.id.news_hd); 
+		news_detail = (TextView )findViewById(R.id.news_detail);
+		activity_outputer_id=(RelativeLayout)findViewById(R.id.activity_outputer_id);
+		iv_img_cancel = (ImageView )findViewById(R.id.iv_img_cancel);
 		
 		for(int i=0; i<3; i++) {
 		nav_RL(3, "nav_rl_", i).setOnTouchListener(new OnTouchListener() {
@@ -105,6 +116,42 @@ public class Activity_MainNewsPage extends Activity {
 			
 		}
 		
+		news_hd.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(!activity_outputer_id.isShown()) {
+					activity_outputer_id.setVisibility(View.VISIBLE);
+				}
+			}
+		});
+		
+		news_detail.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(!activity_outputer_id.isShown()) {
+					activity_outputer_id.setVisibility(View.VISIBLE);
+				}
+			}
+		});
+		activity_outputer_id.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		iv_img_cancel.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(activity_outputer_id.isShown()) {
+					activity_outputer_id.setVisibility(View.GONE);
+				}
+			}
+		});
 		
 	}
 	
