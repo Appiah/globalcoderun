@@ -27,7 +27,7 @@ public final class R {
         public static final int bttn_get_acc=0x7f060021;
         public static final int bttn_sign_up=0x7f06001e;
         public static final int et_email=0x7f06001b;
-        public static final int et_outputer=0x7f060028;
+        public static final int et_outputer=0x7f060029;
         public static final int et_pswd_0=0x7f06001c;
         public static final int et_pswd_1=0x7f06001d;
         public static final int iv_img=0x7f06001a;
@@ -45,7 +45,8 @@ public final class R {
         public static final int nav_v_2=0x7f060011;
         public static final int news_detail=0x7f060022;
         public static final int news_hd=0x7f060020;
-        public static final int outputer_tv=0x7f060027;
+        public static final int outputer_tv_0=0x7f060027;
+        public static final int outputer_tv_1=0x7f060028;
         public static final int sv_0=0x7f060018;
         public static final int sv_outputer_0=0x7f060024;
         public static final int sv_r_0=0x7f060019;
@@ -80,8 +81,10 @@ public final class R {
         public static final int my_profile=0x7f040009;
         public static final int new_post=0x7f04000c;
         public static final int password=0x7f040003;
+        public static final int send_comment=0x7f04000f;
         public static final int sign_up_bttn=0x7f040001;
         public static final int trending=0x7f040007;
+        public static final int view_comment=0x7f040010;
     }
     public static final class style {
         /** 

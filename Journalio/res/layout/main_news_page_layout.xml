@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-	
-	<!--
+
+    <!--
     <ListView
         android:id=""></ListView>
     -->
-    
+
     <include
         android:id="@+id/base_bttns_parent_id"
         layout="@layout/base_bttns"/>
@@ -21,7 +21,7 @@
         android:layout_marginLeft="21dp"
         android:layout_marginTop="38dp"
         android:text="@string/dummy_headline"/>
-    
+
     <TextView
         android:id="@+id/news_detail"
         android:layout_width="wrap_content"
@@ -35,11 +35,25 @@
     <include
         android:id="@+id/app_header_id"
         layout="@layout/app_header"/>
-    
-    <include
-        android:id="@+id/activity_outputer_id"
-        layout="@layout/news_viewer"/>
-    
-    <!-- news_hd, news_detail, activity_outputer_id,  -->
-    
+
+    <RelativeLayout
+        android:id="@+id/activity_inputer_parent_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#90000000"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
+
+            <include
+                android:id="@+id/activity_outputer_id"
+                layout="@layout/news_viewer"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- news_hd, news_detail, activity_outputer_id, -->
+
 </RelativeLayout>

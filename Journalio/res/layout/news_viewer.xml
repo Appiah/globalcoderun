@@ -5,63 +5,82 @@
     android:layout_height="fill_parent"
     android:background="#ffffff">
 
-    <ScrollView 
+    <ScrollView
         android:id="@+id/sv_outputer_0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-          
-    <RelativeLayout
-        android:id="@+id/sv_r_outputer_0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    
-    <ImageView
-        android:id="@+id/iv_img_outputer"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:src="@android:drawable/ic_input_add"/>
 
-    <TextView
-        android:id="@+id/outputer_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_img_outputer"
-        />
-    
-    <EditText
-        android:id="@+id/et_outputer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/outputer_tv"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:ems="10"
-        android:inputType="textMultiLine">
+        <RelativeLayout
+            android:id="@+id/sv_r_outputer_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </EditText>
+            <ImageView
+                android:id="@+id/iv_img_outputer"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
+                android:src="@android:drawable/ic_menu_camera"/>
+<!-- activity_outputer_id, 
+sv_outputer_0, 
+sv_r_outputer_0,
+iv_img_outputer,
+outputer_tv_{0,1},
+et_outputer,
+base_bttns_parent_sv_id,
+base_bttn_sv_{0,1}
+iv_img_cancel
+-->
+            <TextView
+                android:id="@+id/outputer_tv_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_img_outputer"
+                android:layout_centerHorizontal="true"/>
+            
+            <TextView
+                android:id="@+id/outputer_tv_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/outputer_tv_0"
+                android:layout_centerHorizontal="true"/>
 
-	<include
-	    android:id="@+id/base_bttns_parent_sv_id"
-	    layout="@layout/base_bttns_sv"/>   
+            <EditText
+                android:id="@+id/et_outputer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/outputer_tv_1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="34dp"
+                android:ems="10"
+                android:inputType="textMultiLine">
+            </EditText>
 
-    
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_outputer"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/base_bttns_parent_sv_id"
+                    layout="@layout/base_bttns_sv"/>
+            </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
-    
+
     <!-- C -->
+
     <ImageView
         android:id="@+id/iv_img_cancel"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:src="@android:drawable/ic_delete"/>
-    
-    
-    
+
 </RelativeLayout>

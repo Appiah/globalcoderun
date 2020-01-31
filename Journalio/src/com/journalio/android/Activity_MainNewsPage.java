@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class Activity_MainNewsPage extends Activity {
@@ -21,6 +24,15 @@ public class Activity_MainNewsPage extends Activity {
 	TextView news_hd, news_detail;
 	RelativeLayout activity_outputer_id;
 	ImageView iv_img_cancel;
+	
+	ScrollView sv_outputer_0;
+	RelativeLayout sv_r_outputer_0;
+	ImageView iv_img_outputer;
+	//outputer_tv_{0,1},
+	EditText et_outputer;
+	LinearLayout base_bttns_parent_sv_id;
+	Button base_bttn_sv_0, base_bttn_sv_1;//{0,1}
+
 	
 	Context ctx;
 	
@@ -47,6 +59,48 @@ public class Activity_MainNewsPage extends Activity {
 		activity_outputer_id=(RelativeLayout)findViewById(R.id.activity_outputer_id);
 		iv_img_cancel = (ImageView )findViewById(R.id.iv_img_cancel);
 		
+		 sv_outputer_0 =(ScrollView)findViewById(R.id.sv_outputer_0);
+		 sv_r_outputer_0 =(RelativeLayout)findViewById(R.id.sv_r_outputer_0);
+		 iv_img_outputer =(ImageView)findViewById(R.id.iv_img_outputer);
+		//outputer_tv_{0,1},
+		 et_outputer =(EditText)findViewById(R.id.et_outputer);
+		 base_bttns_parent_sv_id =(LinearLayout)findViewById(R.id.base_bttns_parent_sv_id);
+		 base_bttn_sv_0 =(Button)findViewById(R.id.base_bttn_sv_0); 
+		 base_bttn_sv_1 =(Button)findViewById(R.id.base_bttn_sv_1);
+		
+		 //Set all default texts
+		 base_bttn_sv_0.setText(getResources().getString(R.string.send_comment));
+		 base_bttn_sv_1.setText(getResources().getString(R.string.view_comment));
+		 
+		 //For demo purposes, set the texts for the main
+		 //textViews : ie. the news header and the news details
+		 nav_TV(2, "outputer_tv_", 0).setText("Developer Gets $72.8 Billion");
+					
+					nav_TV(2, "outputer_tv_", 1).setText(
+							"\n\nEarlier today, the 4 young "
+							+ "Ghanaina Developers closed a deal with Sundai Pichai"
+							+ " of Google for aldafjalkdjfak oi joaidjfo "
+							+ "ijofaidjoaisdpfoia fyuao ojaodifh ayf9a8dfuoie"
+							+ "ruqoieroqi hodosifjoa ijfaoidjfo aidfjoaijdpofi"
+							+ "ajofdijaodfij oijsdoifjo josdijfoijdfajdlfk lask"
+							+ "jdf ajdfjaoidaohdfiuahdifhqejrkajf;akdhfoahdfoaid "
+							+ "Earlier today, the 4 young Ghanaina Developers closed "
+							+ "a deal with Sundai Pichai of Google for aldafjalkdjfak "
+							+ "oi joaidjfo ");
+		 
+		 for(int x=0; x<3; x++) {
+			
+			//because we are in the Activity_MainNewsPage,
+			//turn off all the views under the tv except 
+			//the first one.
+			if(x==0){//trending
+				nav_V(3, "nav_v_", x).setVisibility(View.VISIBLE);
+			}else{
+				nav_V(3, "nav_v_", x).setVisibility(View.GONE);
+			}
+			
+		}
+		 
 		for(int i=0; i<3; i++) {
 		nav_RL(3, "nav_rl_", i).setOnTouchListener(new OnTouchListener() {
 			
@@ -103,18 +157,7 @@ public class Activity_MainNewsPage extends Activity {
 		});//END OF onTouch
 	}//END OF for(){...}
 		
-		for(int x=0; x<3; x++) {
-			
-			//because we are in the Activity_MainNewsPage,
-			//turn off all the views under the tv except 
-			//the first one.
-			if(x==0){//trending
-				nav_V(3, "nav_v_", x).setVisibility(View.VISIBLE);
-			}else{
-				nav_V(3, "nav_v_", x).setVisibility(View.GONE);
-			}
-			
-		}
+		
 		
 		news_hd.setOnClickListener(new OnClickListener() {
 			
@@ -138,8 +181,7 @@ public class Activity_MainNewsPage extends Activity {
 		activity_outputer_id.setOnClickListener(new OnClickListener() {
 			
 			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
+			public void onClick(View v){
 				
 			}
 		});
@@ -150,6 +192,48 @@ public class Activity_MainNewsPage extends Activity {
 				if(activity_outputer_id.isShown()) {
 					activity_outputer_id.setVisibility(View.GONE);
 				}
+			}
+		});
+		
+		base_bttn_sv_0.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//check if there is content inside the Edittext
+				//and get it and concatenate
+				
+				if(et_outputer.getText().toString().trim().equals("")){
+					//dont post
+				}else {
+					//get the textView (for demo purposes)
+					//and now add or concatenate the text 
+					//entered by the user or reader with
+					//the textView up there.
+					
+					nav_TV(2, "outputer_tv_", 1).setText(
+							nav_TV(2, "outputer_tv_", 1).getText().toString()
+							+"\n\n"
+							+ ""
+							+ et_outputer.getText().toString().trim()
+					);
+					
+					//clear the editText
+					et_outputer.setText("");
+					
+				}
+				
+			}
+		});
+		
+		base_bttn_sv_1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				//when this button is clicked, show all the comments 
+				//by users/readers for this particular news
+				
+				
 			}
 		});
 		

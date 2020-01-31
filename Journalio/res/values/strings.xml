@@ -15,5 +15,7 @@
 	<string name="new_post">New Post</string>
     <string name="cancel">Cancel</string>
     <string name="dummy_usr_nm">John Smith</string>
-	
+    <string name="send_comment">Send Comment</string>
+	<string name="view_comment">View Comment</string>
+    
 </resources>
