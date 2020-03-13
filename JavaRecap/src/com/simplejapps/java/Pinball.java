@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Panel00 extends JPanel {
+public class Pinball extends JPanel {
 	Timer t = new Timer(1, new Listener());
 	int ctr = 0;
 	double G = 0.1; //Gravitational Constant
@@ -43,7 +43,7 @@ public class Panel00 extends JPanel {
 	};
 	int lines[][] = new int[100][5];
 	
-	public Panel00(){
+	public Pinball(){
 		super();
 		t.start();
 		addKeyListener(new Key());
