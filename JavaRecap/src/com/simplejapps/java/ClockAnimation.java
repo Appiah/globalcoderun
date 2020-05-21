@@ -1,4 +1,5 @@
 package com.simplejapps.java;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.animation.Animation;
@@ -10,9 +11,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+
+import java.awt.TextField;
 import java.io.IOException;
-import java.util.Calendar; 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Enumeration;
 import java.util.GregorianCalendar;
+import java.util.List;
+
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -20,6 +30,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+
 public class ClockAnimation extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -30,17 +41,53 @@ public class ClockAnimation extends Application {
 		Timeline animation = new Timeline(new KeyFrame(Duration.millis(1000), eventHandler));
 		animation.setCycleCount(Timeline.INDEFINITE);
 		animation.play();
+		
+		String ip_addrss_str = (ip_address_list.size()>=1)? ip_address_list.toString() : "000.000.000.000";
+		Text tv_ip = new Text(ip_addrss_str);
 		Button cloc = new Button("clock");
 		Button time = new Button("time");
-		HBox hBox = new HBox(cloc, time);
+		HBox hBox = new HBox(cloc, time, tv_ip);
+		
 		cloc.setOnAction(e -> primaryStage.setScene(new Scene(new BorderPane(clock, null, null, hBox, null),200,200)));
 		time.setOnAction(e -> primaryStage.setScene(new Scene(new BorderPane(new DigitalClock(), null, null, hBox, null),200,200)));
 		BorderPane borderPane = new BorderPane(clock, null, null, hBox, null);
 		primaryStage.setScene(new Scene(borderPane,200,200));
 		primaryStage.setTitle("ClockAnimation");
 		primaryStage.show();
+		
 	}
+	
+	public static List<String> ip_address_list = new ArrayList<String>();
+	public static void getIpAddress(){
+			String ip = "";
+			try{
+
+				Enumeration<NetworkInterface> enumNetworkInterfaces = NetworkInterface.getNetworkInterfaces();
+				while (enumNetworkInterfaces.hasMoreElements()) {
+					NetworkInterface networkInterface = enumNetworkInterfaces.nextElement();
+					Enumeration<InetAddress> enumInetAddress = networkInterface.getInetAddresses();
+					while(enumInetAddress.hasMoreElements()){
+						InetAddress inetAddress = enumInetAddress.nextElement();
+						if(inetAddress.isSiteLocalAddress()){
+							String current_ip_str=inetAddress.getHostAddress();
+							ip += "SiteLocalAddress: " + current_ip_str + "\n";
+							ip_address_list.add(current_ip_str);
+						}
+					}
+				}
+
+			}catch(SocketException e){
+				
+					e.printStackTrace();
+					ip += "Something Wrong! " + e.toString() + "\n";
+				
+			}
+
+			//return ip;
+	}
+	
 	public static void main(String[] args) {
+		getIpAddress();
 		launch(args);
 	}
 }
@@ -66,25 +113,25 @@ class ClockPane extends Pane {
 	public int getMinute() {
 		return minute;
 	}
-	public void setMinute(int minute) {
+	public void setMinute(int minute){
 		this.minute = minute;
 		paintClock();
 	}
 	public int getSecond() {
 		return second;
 	}
-	public void setSecond(int second) {
+	public void setSecond(int second){
 		this.second = second;
 		paintClock();
 	}
-	public void setCurrentTime() {
+	public void setCurrentTime(){
 		Calendar calendar = new GregorianCalendar();
 		this.hour = calendar.get(Calendar.HOUR_OF_DAY);
 		this.minute = calendar.get(Calendar.MINUTE);
 		this.second = calendar.get(Calendar.SECOND);
 	    paintClock();
 	}
-	private void paintClock() {
+	private void paintClock(){
 		double clockRadius = Math.min(getWidth(), getHeight()) * 0.8 * 0.5;
 		double centerX = getWidth() / 2;
 		double centerY = getHeight() / 2;
@@ -114,26 +161,26 @@ class ClockPane extends Pane {
 	    getChildren().addAll(circle, t1, t2, t3, t4, sLine, mLine, hLine);
 	}
 	@Override
-	public void setWidth(double width) {
+	public void setWidth(double width){
 		super.setWidth(width);
 		paintClock();
 	}
 	@Override
-	public void setHeight(double height) {
+	public void setHeight(double height){
 		super.setHeight(height);
 		paintClock();
 	}
 }
-class DigitalClock extends Label {
-	public DigitalClock() {
+class DigitalClock extends Label{
+	public DigitalClock(){
 		bindToTime();
 	}
-	private void bindToTime() {
+	private void bindToTime(){
 		Timeline timeline = new Timeline(
 			new KeyFrame(Duration.seconds(0),
-				new EventHandler<ActionEvent>() {
+				new EventHandler<ActionEvent>(){
 						@Override
-						public void handle(ActionEvent actionEvent) {
+						public void handle(ActionEvent actionEvent){
 							Calendar time = Calendar.getInstance();
 							String hourString = StringUtilities.pad(2, ' ', time.get(Calendar.HOUR) == 0 ? "12" : time.get(Calendar.HOUR) + "");
 							String minuteString = StringUtilities.pad(2, '0', time.get(Calendar.MINUTE) + "");
@@ -150,9 +197,9 @@ class DigitalClock extends Label {
 	}
 }
 class StringUtilities {
-	public static String pad(int fieldWidth, char padChar, String s) {
+	public static String pad(int fieldWidth, char padChar, String s){
 		StringBuilder sb = new StringBuilder();
-		for (int i = s.length(); i < fieldWidth; i++) {
+		for (int i = s.length(); i < fieldWidth; i++){
 			sb.append(padChar);
 		}
 		sb.append(s);
