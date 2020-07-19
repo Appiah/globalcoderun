@@ -37,7 +37,7 @@ public static void printdata(Emp object1)
 public static void main(String[] args) 
     { 
         Emp object = new Emp("ab", 20, 2, 1000); 
-        String filename = "shubham.txt"; 
+        String filename = "serialedDeserialedText.txt"; 
   
         // Serialization 
         try { 
