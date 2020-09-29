@@ -1,0 +1,5 @@
+micronaut:
+  application:
+    name: flutterwave-waya-demo0
+  server:
+    port: -1

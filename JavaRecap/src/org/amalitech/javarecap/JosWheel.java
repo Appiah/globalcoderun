@@ -20,8 +20,7 @@ public class JosWheel {
 		Scanner kybd_inpt = new Scanner(System.in);
 		String kybd_inpt_str = kybd_inpt.nextLine();
 		
-		if(kybd_inpt_str.
-				equalsIgnoreCase(code_trigger_starter_str)){
+		if(kybd_inpt_str.equalsIgnoreCase(code_trigger_starter_str)){
 		
 			program_running_bool=true;
 			

@@ -1,0 +1,100 @@
+<html>
+    <head>
+    System Data
+    <script src='/socket.io/socket.io.js' type='text/javascript'></script>
+    <script type='text/javascript' src='jquery-1.11.2.min.js'></script>
+    
+   
+    
+    <title>DB PUSH NOTIFICATION</title>
+    
+    </head>
+    <body>
+        <p></p>
+        <div id='container'>Loading ...</div>
+        <br/>
+        <center><img src='imgz/adjust.gif' width='220px' height='200px'></center>
+        
+    
+    
+     <script>
+        
+        var serverIP = '127.0.0.1',
+            serverIP_2 = '10.0.2.2',
+            serverPort = 4525,
+            serverFullAddress = serverIP+':'+serverPort,
+            serverFullAddress_2 = serverIP_2+':'+serverPort;
+            
+        // create a new websocket
+        //var socket = io.connect(serverFullAddress);
+        var socket = io.connect(serverFullAddress);
+        
+        //alert('Server / html file working with jquery - SUCCESS');
+        
+        
+        /*
+        //Indicate where the "io" is listening from
+        io = socketio.listen(server);
+        io.sockets.on('notification',
+            function (data){
+        
+                    console.log('NOTIFICATION received successfully by Socket');
+        
+                    //var data1 = JSON.parse(data);
+        
+                    var usersList = "<center><table>";
+                    
+                    $.each(data.users,
+                           function(index, user_i){
+                                    usersList += "<tr><td>" + user_i.user_name + "</td>\n";
+                                    usersList += "<td>" + user_i.user_description + "\n";
+                                    usersList += "<figure><img class='img-polaroid' width='50px' src='imgz/" + user_i.user_img + "' /></figure>";
+                                    usersList += "</td></tr>";
+                            }
+                    );
+                    
+                    usersList += "</table></center>";
+                    
+                    $('#container').html(usersList);
+                
+                    $('p').html('Last Update:' + data.time);
+        
+            }             
+        );
+        */
+        
+        // on message received we print all the data inside the #container div
+        socket.on('notification',
+            function (data){
+        
+                    console.log('NOTIFICATION received successfully by Socket');
+        
+                    //var data1 = JSON.parse(data);
+        
+                    var usersList = "<center><table>";
+                    
+                    $.each(data.users,
+                           function(index, user_i){
+                                    usersList += "<tr><td>" + user_i.user_name + "</td>\n";
+                                    usersList += "<td>" + user_i.user_description + "\n";
+                                    usersList += "<figure><img class='img-polaroid' width='50px' src='imgz/" + user_i.user_img + "' /></figure>";
+                                    usersList += "</td></tr>";
+                            }
+                    );
+                    
+                    usersList += "</table></center>";
+                    
+                    $('#container').html(usersList);
+                
+                    $('p').html('Last Update:' + data.time);
+        
+            }
+        );
+        
+        $('#container').html("IT IS WORKING FINE.");
+        
+    </script>
+    
+    </body>
+    
+</html>
