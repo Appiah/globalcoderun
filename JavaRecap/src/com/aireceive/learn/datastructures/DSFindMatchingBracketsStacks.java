@@ -24,6 +24,7 @@ public class DSFindMatchingBracketsStacks {
         stack_peek(stack); 
         stack_search(stack, 2);
         stack_search(stack, 6);
+        
 		
 	}
 	
