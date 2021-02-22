@@ -92,6 +92,7 @@ public class ShopSalesFigures {
 		}
 		
 		
+		
 		//And now the combined quarterly sales figures are :
 		double [] combined_sales_fig_qtr = new double[4];
 		System.out.println("\nCombined Quarterly Sales Figures are : ");
